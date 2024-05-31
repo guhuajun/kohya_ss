@@ -1,16 +1,14 @@
 services:
   kohya-ss-gui:
     container_name: kohya-ss-gui
-    image: 192.168.0.96:5000/bmaltais/kohya-ss-gui:latest
+    image: ghcr.io/bmaltais/kohya-ss-gui:latest
     user: 1000:0
     build:
       context: .
-      dockerfile: Dockerfile
       args:
         - UID=1000
-      # cache_from:
-        # - 192.168.0.96:5000/bmaltais/kohya-ss-gui:cache
-        # - 192.168.0.96:5000/greggu/cf2024-toolbox:notebook
+      cache_from:
+        - ghcr.io/bmaltais/kohya-ss-gui:cache
       cache_to:
         - type=inline
     ports:
